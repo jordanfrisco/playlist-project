@@ -1,10 +1,9 @@
-/**
- * Copyright 2026 jordanfrisco
- * @license Apache-2.0, see LICENSE for full text.
- */
+
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "./slide-arrow.js";
+import "./slide-indicator.js";
 
 /**
  * `playlist-project`
@@ -12,6 +11,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * @demo index.html
  * @element playlist-project
  */
+
+
 export class PlaylistProject extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
@@ -21,17 +22,11 @@ export class PlaylistProject extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
-    this.t = this.t || {};
+    this.currentIndex = 0;
     this.t = {
-      ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/playlist-project.ar.json", import.meta.url).href +
-        "/../",
-    });
+    this.slides = Array.from(this.querySelectorAll("playlist-slide"));
   }
 
   // Lit reactive properties
@@ -39,6 +34,7 @@ export class PlaylistProject extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      currentIndex: { type: Number },
     };
   }
 
@@ -67,17 +63,52 @@ export class PlaylistProject extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <div class="wrapper">
   <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <slide-arrow
+    .index="${this.currentIndex}"
+    .total="${this.slides ? this.slides.length : 0}"
+    @prev-clicked="${this.prev}"
+    @next-clicked="${this.next}">
+  </slide-arrow>
   <slot></slot>
+  <slide-indicator
+    @playlist-index-changed="${this.handleEvent}"
+    .total="${this.slides ? this.slides.length : 0}"
+    .currentIndex="${this.currentIndex}">
+  </slide-indicator>
 </div>`;
   }
 
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+  handleEvent(e) {
+    this.currentIndex = e.detail.index;
+    this._updateSlides();
+  }
+
+next() {
+  if (this.currentIndex < this.slides.length - 1) {
+    this.currentIndex++;
+    this._updateSlides();
   }
 }
 
-globalThis.customElements.define(PlaylistProject.tag, PlaylistProject);
+prev() {
+  if (this.currentIndex > 0) {
+    this.currentIndex--;
+    this._updateSlides();
+  }
+}
+
+firstUpdated() {
+  this._updateSlides();
+}
+
+_updateSlides() {
+  this.slides.forEach((slide, i) => {
+    slide.style.display = i === this.currentIndex ? "block" : "none";
+  });
+
+}
+
+}
+
+globalThis.customElements.define(PlaylistProject.tag, PlaylistProject); 
+

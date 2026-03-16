@@ -1,6 +1,27 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 
+
+
+<playlist-project index="4">
+    <playlist-slide top-heading="First Slide" second-heading="Slide 1, sub-heading">
+      <p>First slide</p>
+    </playlist-slide>
+    <playlist-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
+      <p>Second slide</p>
+    </playlist-slide>
+    <playlist-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
+      <p>THE THIRD SLIDE!!!!</p>
+    </playlist-slide>
+     <playlist-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
+      <p>fourth slide</p>
+    </playlist-slide>
+</playlist-project>
+
+
+
+
+<body>
 <head>
   <base href="/">
   <meta charset="utf-8">
@@ -32,37 +53,48 @@
   <title>playlist-project</title>
 </head>
 
-<body>
+</body>
   <div id="demo">
-    
     <h1>playlist-project</h1>
-    <!-- this is going to do whatever the tag's defaults are -->
-     <playlist-project index="3">
-
-  <play-list-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
-    <p>A whole bunch of content in here</p>
-  </playlist-slide>
-<playlist-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
-    <p>A whole bunch of content in here</p>
-  </playlist-slide>
-<playlist-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
-    <p>A whole bunch of content in here</p>
-  </playlist-slide>
-<playlist-slide top-heading="Top line heading" second-heading="Slide 1, sub-heading">
-    <p>A whole bunch of content in here</p>
-  </playlist-slide>
-</playlist-project>
 
     <h2>Default</h2>
-    <playlist-project></playlist-project>
+    <playlist-project>
+      <playlist-slide>
+        <p>slide 1</p>
+      </playlist-slide>
+      <playlist-slide>
+        <p>slide 2</p>
+      </playlist-slide>
+      <playlist-slide>
+        <p>slide 3</p>
+      </playlist-slide>
+    </playlist-project>
+
     <h2>Slot usage</h2>
-    <playlist-project data-accent="2" data-primary="17"><div>Sample slot content</div></playlist-project>
+    <playlist-project data-accent="2" data-primary="17">
+      <playlist-slide>
+        <p>slide 1</p>
+      </playlist-slide>
+      <playlist-slide>
+        <p>slide 2</p>
+      </playlist-slide>
+    </playlist-project>
+
     <h2>Property usage</h2>
-    <playlist-project id="example" title="Sample property title"></playlist-project>
+    <playlist-project id="example" title="Sample property title">
+      <playlist-slide>
+        <p>slide 1</p>
+      </playlist-slide>
+      <playlist-slide>
+        <p>slide 2</p>
+      </playlist-slide>
+    </playlist-project>
+
   </div>
   <script type="module" src="./playlist-project.js"></script>
+</body>
 
-  <!-- Take HAX, the Web and you further down the rabbit hole -->
+  Take HAX, the Web and you further down the rabbit hole 
   <style>
     #follow-the-white-rabbit {
       margin: var(--ddd-spacing-4) auto var(--ddd-spacing-16)  var(--ddd-spacing-4);
@@ -103,16 +135,11 @@
     <div class="content">
       <p>
       
+        
       </p>
       <p>
-        You can edit the current page by modifying <code>index.html</code><br />
-        To edit your <strong>playlist-project</strong> tag, modify <code>src/playlist-project.js</code>.
-        This file contains all the HTML, CSS and JavaScript used to render your elements above!
       </p>
-      <p>
-        Web components are easy to follow once you get used to their pattern.
-        Below are links to help on your journey. Good luck, we need you!
-      </p>
+     
       <ul>
         <li><a href="https://haxtheweb.org/documentation/ddd" target="_blank">🧑‍🎨 Learn DDD HAX Design system</a></li>
         <li><a href="https://lit.dev/playground/" target="_blank" rel="nofollow">🔥 Learn Lit</a></li>
@@ -136,11 +163,73 @@
       </ul>
       <h2>Find purpose and inspiration</h2>
       <ul>
-        <li><a href="https://www.youtube.com/watch?v=eC7xzavzEKY" target="_blank" rel="nofollow">🐟 This is Water - David Foster Wallace</a></li>
-        <li><a href="https://www.youtube.com/watch?v=kYfNvmF0Bqw" target="_blank" rel="nofollow">🏗️ Secrets of Life - Steve Jobs</a></li>
-        <li><strong>💡 <em>Never. Stop. Innovating.</em></strong></li>
       </ul>
     </div>
   </details>
 </body>
-</html>
+</html>  -->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="Description" content="playlist-project demo">
+
+  <title>playlist-project</title>
+
+  <style>
+    :root, html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    playlist-project {
+      margin: 20px;
+      border: var(--ddd-border-md);
+      border-radius: var(--ddd-radius-lg);
+    }
+
+    playlist-project:hover {
+      box-shadow: var(--ddd-boxShadow-sm);
+    }
+  </style>
+
+</head>
+
+<body>
+
+<playlist-project index="0">
+
+
+  <playlist-slide top-heading="TOP LINE HEADING" second-heading="Slide 1, sub-heading">
+    <p>
+      This could be an image, a whole bunch of text or anything really.
+      This could be an image, a whole bunch of text or anything really.
+      This could be an image, a whole bunch of text or anything really.
+      This could be an image, a whole bunch of text or anything really.
+      This could be an image, a whole bunch of text or anything really.
+
+    </p>
+  </playlist-slide>
+
+  <playlist-slide top-heading="TOP LINE HEADING" second-heading="Slide 2, sub-heading">
+    <p>Second slide content</p>
+  </playlist-slide>
+
+  <playlist-slide top-heading="Top line heading" second-heading="Slide 3, sub-heading">
+    <p>Third slide content</p>
+  </playlist-slide>
+
+  <playlist-slide top-heading="Top line heading" second-heading="Slide 4, sub-heading">
+    <p>Fourth slide content</p>
+  </playlist-slide>
+
+</playlist-project>
+
+<script type="module" src="./playlist-project.js"></script>
+
+</body>
+</html> 
